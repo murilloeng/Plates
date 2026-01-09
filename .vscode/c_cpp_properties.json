@@ -22,6 +22,7 @@
 			"name": "Linux",
 			"includePath":
 			[
+				"${QT_HOME}/include",
 				"${workspaceFolder}/..",
 				"${workspaceFolder}/../external/cpp/inc"
 			],

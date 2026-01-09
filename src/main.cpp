@@ -2,14 +2,23 @@
 #include <cstdio>
 #include <stdexcept>
 
-//plates
-#include "Plates/inc/Application.hpp"
+//Qt
+#include "QtWidgets/QApplication"
 
-int main(void)
+//plates
+#include "Plates/inc/Window.hpp"
+
+int main(int argc, char* argv[])
 {
 	try
 	{
-		Application().start();
+		//application
+		QApplication application(argc, argv);
+		//window
+		Window window;
+		window.showFullScreen();
+		//return
+		return application.exec();
 	}
 	catch(const std::exception& e)
 	{

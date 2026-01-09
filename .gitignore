@@ -1,6 +1,7 @@
 *
 !*/
 !*.md
+!*.ui
 !*.cpp
 !*.hpp
 !*.vcxproj
