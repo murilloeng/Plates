@@ -21,6 +21,10 @@ void Canvas::plate(Plate* plate)
 {
 	m_plate = plate;
 }
+canvas::Scene* Canvas::scene(void)
+{
+	return m_scene;
+}
 
 //OpenGL
 void Canvas::paintGL(void)

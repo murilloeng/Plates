@@ -21,6 +21,7 @@ public:
 
 	//data
 	void plate(Plate*);
+	canvas::Scene* scene(void);
 
 private:
 	//OpenGL

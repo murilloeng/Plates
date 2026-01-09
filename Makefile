@@ -35,7 +35,6 @@ mog := $(subst ./inc/, build/moc/, $(patsubst %.hpp, %.cpp, $(hea)))
 obj := $(subst ./src/, build/$(mode)/obj/, $(patsubst %.cpp, %.o, $(src)))
 obj += $(subst build/moc/, build/$(mode)/moc/, $(patsubst %.cpp, %.o, $(mog)))
 
-
 #dependencies
 dep = $(subst .o,.d, $(obj))
 
@@ -50,7 +49,10 @@ run : exe
 debug : exe
 	gdb ./$(out)
 
-exe : $(out)
+canvas :
+	+@cd ../Canvas && $(MAKE) -f Makefile m=$m
+
+exe : canvas $(out)
 	@echo 'executable build - $(mode): complete!'
 
 $(out) : $(uig) $(mog) $(obj)
