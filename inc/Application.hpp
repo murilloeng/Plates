@@ -15,6 +15,20 @@ public:
 	//destructor
 	~Application(void);
 
+	//start
+	void start(void);
+
+private:
+	//setup
+	void setup_glfw(void);
+	void setup_scene(void);
+	void setup_callbacks(void);
+
+	//callbacks
+	static void callback_error(int, const char*);
+	static void callback_size(GLFWwindow*, int, int);
+	static void callback_key(GLFWwindow*, int, int, int, int);
+
 	//data
 	GLFWwindow* m_window;
 	canvas::Scene* m_scene;

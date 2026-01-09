@@ -9,7 +9,7 @@ int main(void)
 {
 	try
 	{
-		Application application;
+		Application().start();
 	}
 	catch(const std::exception& e)
 	{
