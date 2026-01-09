@@ -6,6 +6,9 @@
 //canvas
 #include "Canvas/Canvas/inc/Scene/Scene.hpp"
 
+//plates
+#include "Plates/inc/Plate.hpp"
+
 class Application
 {
 public:
@@ -30,6 +33,7 @@ private:
 	static void callback_key(GLFWwindow*, int, int, int, int);
 
 	//data
+	Plate m_plate;
 	GLFWwindow* m_window;
 	canvas::Scene* m_scene;
 };

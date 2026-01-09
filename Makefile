@@ -15,7 +15,7 @@ else
 endif
 
 #ouput
-out = dist/$(mode)/plate.out
+out = dist/$(mode)/plates.out
 lib_canvas = ../Canvas/Canvas/dist/$(mode)/libcanvas.so
 
 #sources

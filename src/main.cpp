@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <stdexcept>
 
-//plate
+//plates
 #include "Plates/inc/Application.hpp"
 
 int main(void)

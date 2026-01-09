@@ -4,7 +4,7 @@
 //canvas
 #include "Canvas/Canvas/inc/API/Loader.hpp"
 
-//plate
+//plates
 #include "Plates/inc/Application.hpp"
 
 //constructor
@@ -18,6 +18,8 @@ Application::Application(void)
 //destructor
 Application::~Application(void)
 {
+	//objects
+	m_scene->clear_objects(false);
 	//scene
 	delete m_scene;
 	//window
@@ -32,8 +34,10 @@ void Application::start(void)
 	glfwMaximizeWindow(m_window);
 	while(!glfwWindowShouldClose(m_window))
 	{
-		glClear(GL_COLOR_BUFFER_BIT);
+		//events
 		glfwPollEvents();
+		//draw
+		m_scene->draw();
 		glfwSwapBuffers(m_window);
 	}
 }
@@ -63,11 +67,16 @@ void Application::setup_glfw(void)
 }
 void Application::setup_scene(void)
 {
+	//scene
 	m_scene = new canvas::Scene("../Canvas/Canvas/shd/");
+	//objects
+	m_scene->add_object(&m_plate);
+	m_scene->update(true);
 }
 void Application::setup_callbacks(void)
 {
 	glfwSetErrorCallback(callback_error);
+	glfwSetWindowUserPointer(m_window, this);
 	glfwSetKeyCallback(m_window, callback_key);
 	glfwSetWindowSizeCallback(m_window, callback_size);
 }
@@ -83,7 +92,13 @@ void Application::callback_error(int error, const char* description)
 }
 void Application::callback_size(GLFWwindow* window, int width, int height)
 {
-	glViewport(0, 0, width, height);
+	//data
+	Application* application = (Application*) glfwGetWindowUserPointer(window);
+	//scene
+	application->m_scene->camera().callback_reshape(width, height);
+	application->m_scene->update(true);
+	//update
+	glfwSwapBuffers(window);
 }
 void Application::callback_key(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
