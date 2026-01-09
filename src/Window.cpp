@@ -39,6 +39,7 @@ Window::Window(void) : m_ui{new Ui::Window}
 	m_ui->setupUi(this);
 	//setup
 	setup_mesh();
+	setup_canvas();
 	setup_geometry();
 	setWindowTitle("Plates");
 	//connect
@@ -118,6 +119,10 @@ void Window::setup_mesh(void)
 	m_ui->edit_mesh_height->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
 	m_ui->label_mesh_width->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
 	m_ui->label_mesh_height->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
+}
+void Window::setup_canvas(void)
+{
+	m_ui->canvas->plate(&m_plate);
 }
 void Window::setup_geometry(void)
 {

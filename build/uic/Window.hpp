@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'Window.ui'
 **
-** Created by: Qt User Interface Compiler version 6.9.2
+** Created by: Qt User Interface Compiler version 6.9.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -9,8 +9,8 @@
 #ifndef WINDOW_H
 #define WINDOW_H
 
+#include <Plates/inc/Canvas.hpp>
 #include <QtCore/QVariant>
-#include <QtOpenGLWidgets/QOpenGLWidget>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
@@ -54,7 +54,7 @@ public:
     QLabel *label_geometry_type;
     QComboBox *combo_geometry_type;
     QSpacerItem *verticalSpacer;
-    QOpenGLWidget *canvas;
+    Canvas *canvas;
 
     void setupUi(QMainWindow *Window)
     {
@@ -68,56 +68,69 @@ public:
         controls = new QFrame(widget);
         controls->setObjectName("controls");
         controls->setMaximumSize(QSize(250, 16777215));
-        controls->setFrameShape(QFrame::Shape::StyledPanel);
         controls->setFrameShadow(QFrame::Shadow::Raised);
         gridLayout_2 = new QGridLayout(controls);
         gridLayout_2->setObjectName("gridLayout_2");
         group_loads = new QGroupBox(controls);
         group_loads->setObjectName("group_loads");
+        QFont font;
+        font.setBold(true);
+        group_loads->setFont(font);
 
         gridLayout_2->addWidget(group_loads, 2, 0, 1, 1);
 
         group_mesh = new QGroupBox(controls);
         group_mesh->setObjectName("group_mesh");
+        group_mesh->setFont(font);
         gridLayout_3 = new QGridLayout(group_mesh);
         gridLayout_3->setObjectName("gridLayout_3");
         edit_mesh_height = new QLineEdit(group_mesh);
         edit_mesh_height->setObjectName("edit_mesh_height");
+        QFont font1;
+        font1.setBold(false);
+        edit_mesh_height->setFont(font1);
 
         gridLayout_3->addWidget(edit_mesh_height, 1, 1, 1, 1);
 
         label_mesh_width = new QLabel(group_mesh);
         label_mesh_width->setObjectName("label_mesh_width");
+        label_mesh_width->setFont(font1);
 
         gridLayout_3->addWidget(label_mesh_width, 0, 0, 1, 1);
 
         label_mesh_radius = new QLabel(group_mesh);
         label_mesh_radius->setObjectName("label_mesh_radius");
+        label_mesh_radius->setFont(font1);
 
         gridLayout_3->addWidget(label_mesh_radius, 3, 0, 1, 1);
 
         label_mesh_height = new QLabel(group_mesh);
         label_mesh_height->setObjectName("label_mesh_height");
+        label_mesh_height->setFont(font1);
 
         gridLayout_3->addWidget(label_mesh_height, 1, 0, 1, 1);
 
         edit_mesh_width = new QLineEdit(group_mesh);
         edit_mesh_width->setObjectName("edit_mesh_width");
+        edit_mesh_width->setFont(font1);
 
         gridLayout_3->addWidget(edit_mesh_width, 0, 1, 1, 1);
 
         edit_mesh_radius = new QLineEdit(group_mesh);
         edit_mesh_radius->setObjectName("edit_mesh_radius");
+        edit_mesh_radius->setFont(font1);
 
         gridLayout_3->addWidget(edit_mesh_radius, 3, 1, 2, 1);
 
         label_mesh_angle = new QLabel(group_mesh);
         label_mesh_angle->setObjectName("label_mesh_angle");
+        label_mesh_angle->setFont(font1);
 
         gridLayout_3->addWidget(label_mesh_angle, 2, 0, 1, 1);
 
         edit_mesh_angle = new QLineEdit(group_mesh);
         edit_mesh_angle->setObjectName("edit_mesh_angle");
+        edit_mesh_angle->setFont(font1);
 
         gridLayout_3->addWidget(edit_mesh_angle, 2, 1, 1, 1);
 
@@ -126,40 +139,48 @@ public:
 
         group_geometry = new QGroupBox(controls);
         group_geometry->setObjectName("group_geometry");
+        group_geometry->setFont(font);
         gridLayout = new QGridLayout(group_geometry);
         gridLayout->setObjectName("gridLayout");
         label_geometry_height = new QLabel(group_geometry);
         label_geometry_height->setObjectName("label_geometry_height");
+        label_geometry_height->setFont(font1);
 
         gridLayout->addWidget(label_geometry_height, 2, 0, 1, 1);
 
         edit_geometry_width = new QLineEdit(group_geometry);
         edit_geometry_width->setObjectName("edit_geometry_width");
+        edit_geometry_width->setFont(font1);
 
         gridLayout->addWidget(edit_geometry_width, 1, 1, 1, 1);
 
         edit_geometry_radius = new QLineEdit(group_geometry);
         edit_geometry_radius->setObjectName("edit_geometry_radius");
+        edit_geometry_radius->setFont(font1);
 
         gridLayout->addWidget(edit_geometry_radius, 3, 1, 1, 1);
 
         label_geometry_radius = new QLabel(group_geometry);
         label_geometry_radius->setObjectName("label_geometry_radius");
+        label_geometry_radius->setFont(font1);
 
         gridLayout->addWidget(label_geometry_radius, 3, 0, 1, 1);
 
         edit_geometry_height = new QLineEdit(group_geometry);
         edit_geometry_height->setObjectName("edit_geometry_height");
+        edit_geometry_height->setFont(font1);
 
         gridLayout->addWidget(edit_geometry_height, 2, 1, 1, 1);
 
         label_geometry_width = new QLabel(group_geometry);
         label_geometry_width->setObjectName("label_geometry_width");
+        label_geometry_width->setFont(font1);
 
         gridLayout->addWidget(label_geometry_width, 1, 0, 1, 1);
 
         label_geometry_type = new QLabel(group_geometry);
         label_geometry_type->setObjectName("label_geometry_type");
+        label_geometry_type->setFont(font1);
 
         gridLayout->addWidget(label_geometry_type, 0, 0, 1, 1);
 
@@ -167,6 +188,7 @@ public:
         combo_geometry_type->addItem(QString());
         combo_geometry_type->addItem(QString());
         combo_geometry_type->setObjectName("combo_geometry_type");
+        combo_geometry_type->setFont(font1);
 
         gridLayout->addWidget(combo_geometry_type, 0, 1, 1, 1);
 
@@ -180,7 +202,7 @@ public:
 
         horizontalLayout->addWidget(controls);
 
-        canvas = new QOpenGLWidget(widget);
+        canvas = new Canvas(widget);
         canvas->setObjectName("canvas");
 
         horizontalLayout->addWidget(canvas);

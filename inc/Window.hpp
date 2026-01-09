@@ -27,6 +27,7 @@ private:
 
 	//setup
 	void setup_mesh(void);
+	void setup_canvas(void);
 	void setup_geometry(void);
 
 	//connect
