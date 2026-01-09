@@ -98,7 +98,8 @@ void Window::slot_geometry(void)
 			{
 				value_old = value_new;
 				(m_plate.*fun_geometry_set[i])(value_new);
-				m_ui->canvas->scene()->update(false);
+				m_ui->canvas->scene()->update(true);
+				m_ui->canvas->scene()->camera().bound();
 				m_ui->canvas->update();
 			}
 			edits[i]->setText(QString::asprintf("%+.6e", value_old));
