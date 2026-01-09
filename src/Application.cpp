@@ -5,7 +5,7 @@
 #include "Canvas/Canvas/inc/API/Loader.hpp"
 
 //plate
-#include "Plate/inc/Application.hpp"
+#include "Plates/inc/Application.hpp"
 
 //callbacks
 static void callback_key(GLFWwindow* window, int key, int scancode, int action, int mods)

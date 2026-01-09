@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 //plate
-#include "Plate/inc/Application.hpp"
+#include "Plates/inc/Application.hpp"
 
 int main(void)
 {
