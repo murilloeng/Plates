@@ -4,6 +4,10 @@
 !*.ui
 !*.cpp
 !*.hpp
+!*.slnx
 !*.vcxproj
 !*Makefile
 !.gitignore
+
+**/uic/*
+**/moc/*
