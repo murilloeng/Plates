@@ -124,7 +124,8 @@
       <AdditionalDependencies>OpenGL32.lib;freetype.lib;Qt6Gui.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6OpenGLWidgets.lib;dist/$(platform)/$(configuration)/Canvas.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>python pre-build.py</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy /y ..\external\cpp\dll\$(platform)\freetype.dll dist\$(platform)\$(configuration) &gt; nul</Command>
@@ -150,7 +151,8 @@
       <AdditionalDependencies>OpenGL32.lib;freetype.lib;Qt6Gui.lib;Qt6Core.lib;Qt6Widgets.lib;Qt6OpenGLWidgets.lib;dist/$(platform)/$(configuration)/Canvas.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreBuildEvent>
-      <Command>python pre-build.py</Command>
+      <Command>
+      </Command>
     </PreBuildEvent>
     <PostBuildEvent>
       <Command>copy /y ..\external\cpp\dll\$(platform)\freetype.dll dist\$(platform)\$(configuration) &gt; nul</Command>
@@ -164,15 +166,22 @@
     <ClInclude Include="inc\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="build\moc\Application.cpp" />
-    <ClCompile Include="build\moc\Canvas.cpp" />
-    <ClCompile Include="build\moc\Plate.cpp" />
-    <ClCompile Include="build\moc\Window.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Canvas.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Plate.cpp" />
     <ClCompile Include="src\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui\Window.ui">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QtHome)\bin\uic.exe ui\Window.ui -o build\uic\Window.hpp
+</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QtHome)\bin\uic.exe ui\Window.ui -o build\uic\Window.hpp
+</Command>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build\uic\Window.hpp</Outputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build\uic\Window.hpp</Outputs>
+    </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

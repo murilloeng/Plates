@@ -79,6 +79,12 @@ public:
 
 private:
 	//buffers
+	void vbo_data_edges(void) const;
+	void vbo_data_faces(void) const;
+
+	void ibo_data_edges(void) const;
+	void ibo_data_faces(void) const;
+
 	void buffers_size(void) override;
 	void buffers_data(void) const override;
 

@@ -29,6 +29,9 @@ private:
 	void resizeGL(int, int) override;
 	void initializeGL(void) override;
 
+	//events
+	void resizeEvent(QResizeEvent*) override;
+
 	//data
 	Plate* m_plate;
 	canvas::Scene* m_scene;

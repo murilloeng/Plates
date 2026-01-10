@@ -21,6 +21,15 @@ static double(Plate::*fun_geometry_get[])(void) const = {
 	&Plate::thickness
 };
 
+static double(Plate::* fun_material_set[])(double) = {
+	&Plate::poisson_ratio,
+	&Plate::elastic_modulus
+};
+static double(Plate::* fun_material_get[])(void) const = {
+	&Plate::poisson_ratio,
+	&Plate::elastic_modulus
+};
+
 static uint32_t(Plate::*fun_mesh_set[])(uint32_t) = {
 	&Plate::mesh_angle,
 	&Plate::mesh_width,
@@ -32,6 +41,13 @@ static uint32_t(Plate::*fun_mesh_get[])(void) const = {
 	&Plate::mesh_width,
 	&Plate::mesh_height,
 	&Plate::mesh_radius
+};
+
+static double(Plate::* fun_load_set[])(double) = {
+	&Plate::load_value
+};
+static double(Plate::* fun_load_get[])(void) const = {
+	&Plate::load_value
 };
 
 //constructor
@@ -47,8 +63,10 @@ Window::Window(void) : m_ui{new Ui::Window}
 	setup_material();
 	setWindowTitle("Plates");
 	//connect
+	connect_load();
 	connect_mesh();
 	connect_geometry();
+	connect_material();
 }
 
 //destructor
@@ -88,7 +106,25 @@ void Window::slot_mesh(void)
 }
 void Window::slot_load(void)
 {
-
+	bool test;
+	QLineEdit* edits[] = {
+		m_ui->edit_loads_value
+	};
+	const QObject* sender = QObject::sender();
+	for (uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		if (sender == edits[i])
+		{
+			double value_old = (m_plate.*fun_load_get[i])();
+			const double value_new = edits[i]->text().toDouble(&test);
+			if (test && value_new != value_old)
+			{
+				value_old = value_new;
+				(m_plate.*fun_load_set[i])(value_new);
+			}
+			edits[i]->setText(QString::asprintf("%+.6e", value_old));
+		}
+	}
 }
 void Window::slot_geometry(void)
 {
@@ -120,7 +156,26 @@ void Window::slot_geometry(void)
 }
 void Window::slot_material(void)
 {
-
+	bool test;
+	QLineEdit* edits[] = {
+		m_ui->edit_material_poisson_ratio,
+		m_ui->edit_material_elastic_modulus
+	};
+	const QObject* sender = QObject::sender();
+	for(uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		if (sender == edits[i])
+		{
+			double value_old = (m_plate.*fun_material_get[i])();
+			const double value_new = edits[i]->text().toDouble(&test);
+			if (test && value_new != value_old)
+			{
+				value_old = value_new;
+				(m_plate.*fun_material_set[i])(value_new);
+			}
+			edits[i]->setText(QString::asprintf("%+.6e", value_old));
+		}
+	}
 }
 
 //setup
@@ -169,18 +224,52 @@ void Window::setup_material(void)
 }
 
 //connect
-void Window::connect_mesh(void)
+void Window::connect_load(void) const
 {
-	QObject::connect(m_ui->edit_mesh_angle, &QLineEdit::editingFinished, this, &Window::slot_mesh);
-	QObject::connect(m_ui->edit_mesh_width, &QLineEdit::editingFinished, this, &Window::slot_mesh);
-	QObject::connect(m_ui->edit_mesh_height, &QLineEdit::editingFinished, this, &Window::slot_mesh);
-	QObject::connect(m_ui->edit_mesh_radius, &QLineEdit::editingFinished, this, &Window::slot_mesh);
+	QLineEdit* edits[] = {
+		m_ui->edit_loads_value
+	};
+	for(uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		QObject::connect(edits[i], &QLineEdit::editingFinished, this, &Window::slot_load);
+	}
 }
-void Window::connect_geometry(void)
+void Window::connect_mesh(void) const
 {
-	QObject::connect(m_ui->edit_geometry_width, &QLineEdit::editingFinished, this, &Window::slot_geometry);
-	QObject::connect(m_ui->edit_geometry_height, &QLineEdit::editingFinished, this, &Window::slot_geometry);
-	QObject::connect(m_ui->edit_geometry_radius, &QLineEdit::editingFinished, this, &Window::slot_geometry);
+	QLineEdit* edits[] = {
+		m_ui->edit_mesh_angle,
+		m_ui->edit_mesh_width,
+		m_ui->edit_mesh_height,
+		m_ui->edit_mesh_radius
+	};
+	for(uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		QObject::connect(edits[i], &QLineEdit::editingFinished, this, &Window::slot_mesh);
+	}
+}
+void Window::connect_geometry(void) const
+{
+	QLineEdit* edits[] = {
+		m_ui->edit_geometry_width,
+		m_ui->edit_geometry_height,
+		m_ui->edit_geometry_radius,
+		m_ui->edit_geometry_thickness
+	};
+	for (uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		QObject::connect(edits[i], &QLineEdit::editingFinished, this, &Window::slot_geometry);
+	}
+}
+void Window::connect_material(void) const
+{
+	QLineEdit* edits[] = {
+		m_ui->edit_material_poisson_ratio,
+		m_ui->edit_material_elastic_modulus
+	};
+	for (uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
+	{
+		QObject::connect(edits[i], &QLineEdit::editingFinished, this, &Window::slot_material);
+	}
 }
 
 //callbacks

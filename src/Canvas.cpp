@@ -1,3 +1,9 @@
+//std
+#include <cstdint>
+
+//Qt
+#include "QtGui/QPainterPath"
+
 //Plates
 #include "Plates/inc/Canvas.hpp"
 
@@ -45,4 +51,14 @@ void Canvas::initializeGL(void)
 	m_scene->add_object(m_plate);
 	//update
 	m_scene->update(true);
+}
+
+//events
+void Canvas::resizeEvent(QResizeEvent* event)
+{
+	QPainterPath path;
+	const uint32_t radius = 16;
+	QOpenGLWidget::resizeEvent(event);
+	path.addRoundedRect(rect(), radius, radius);
+	setMask(QRegion(path.toFillPolygon().toPolygon()));
 }

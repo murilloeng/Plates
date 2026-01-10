@@ -22,8 +22,8 @@ public:
 
 private:
 	//slots
-	void slot_mesh(void);
 	void slot_load(void);
+	void slot_mesh(void);
 	void slot_geometry(void);
 	void slot_material(void);
 
@@ -35,8 +35,10 @@ private:
 	void setup_material(void);
 
 	//connect
-	void connect_mesh(void);
-	void connect_geometry(void);
+	void connect_load(void) const;
+	void connect_mesh(void) const;
+	void connect_geometry(void) const;
+	void connect_material(void) const;
 
 	//callbacks
 	void keyPressEvent(QKeyEvent*) override;
