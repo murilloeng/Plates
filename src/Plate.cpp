@@ -105,8 +105,12 @@ uint32_t Plate::mesh_radius(uint32_t mesh_radius)
 //buffers
 void Plate::buffers_size(void)
 {
-	m_vbo_size[0] = 4;
-	m_ibo_size[1] = 8;
+	//data
+	const uint32_t nw = m_mesh_width;
+	const uint32_t nh = m_mesh_height;
+	//bufers
+	m_vbo_size[0] = (nw + 1) * (nh + 1);
+	m_ibo_size[1] = 2 * (nw + nh + 2 * nw * nh);
 }
 void Plate::buffers_data(void) const
 {
@@ -114,16 +118,37 @@ void Plate::buffers_data(void) const
 	const float w = float(m_width);
 	const float h = float(m_height);
 	uint32_t* ibo_ptr = ibo_data(1);
+	const uint32_t nw = m_mesh_width;
+	const uint32_t nh = m_mesh_height;
 	canvas::vertices::Model3D* vbo_ptr = vbo_data_model_3D();
 	//vbo data
-	vbo_ptr[0].m_position = {-w / 2, -h / 2, 0};
-	vbo_ptr[1].m_position = {+w / 2, -h / 2, 0};
-	vbo_ptr[2].m_position = {+w / 2, +h / 2, 0};
-	vbo_ptr[3].m_position = {-w / 2, +h / 2, 0};
-	for(uint32_t i = 0; i < 4; i++) vbo_ptr[i].m_color = {1, 1, 1};
+	for(uint32_t i = 0; i <= nh; i++)
+	{
+		for(uint32_t j = 0; j <= nw; j++)
+		{
+			vbo_ptr[(nw + 1) * i + j].m_position[2] = 0;
+			vbo_ptr[(nw + 1) * i + j].m_color = {1, 1, 1};
+			vbo_ptr[(nw + 1) * i + j].m_position[0] = -w / 2 + w * j / nw;
+			vbo_ptr[(nw + 1) * i + j].m_position[1] = -h / 2 + h * i / nh;
+		}
+	}
 	//ibo data
-	ibo_ptr[2 * 0 + 0] = ibo_ptr[2 * 3 + 1] = 0;
-	ibo_ptr[2 * 1 + 0] = ibo_ptr[2 * 0 + 1] = 1;
-	ibo_ptr[2 * 2 + 0] = ibo_ptr[2 * 1 + 1] = 2;
-	ibo_ptr[2 * 3 + 0] = ibo_ptr[2 * 2 + 1] = 3;
+	for(uint32_t i = 0; i <= nh; i++)
+	{
+		for(uint32_t j = 0; j < nw; j++)
+		{
+			ibo_ptr[0] = (nw + 1) * i + j + 0;
+			ibo_ptr[1] = (nw + 1) * i + j + 1;
+			ibo_ptr += 2;
+		}
+	}
+	for(uint32_t i = 0; i < nh; i++)
+	{
+		for(uint32_t j = 0; j <= nw; j++)
+		{
+			ibo_ptr[0] = (nw + 1) * (i + 0) + j;
+			ibo_ptr[1] = (nw + 1) * (i + 1) + j;
+			ibo_ptr += 2;
+		}
+	}
 }
