@@ -7,7 +7,8 @@
 
 //constructor
 Plate::Plate(void) :
-	m_width{1}, m_height{1}, m_radius{1}, 
+	m_width{1}, m_height{1}, m_radius{1}, m_thickness{0.1},
+	m_load_value{0}, m_poisson_ratio{3.00e-01}, m_elastic_modulus{2.00e+11},
 	m_load{Load::ponctual}, m_geometry{Geometry::rectangle}, 
 	m_mesh_angle{10}, m_mesh_width{10}, m_mesh_height{10}, m_mesh_radius{10}
 {
@@ -46,6 +47,42 @@ double Plate::radius(void) const
 double Plate::radius(double radius)
 {
 	return m_radius = radius;
+}
+
+double Plate::thickness(void) const
+{
+	return m_thickness;
+}
+double Plate::thickness(double thickness)
+{
+	return m_thickness = thickness;
+}
+
+double Plate::load_value(void) const
+{
+	return m_load_value;
+}
+double Plate::load_value(double load_value)
+{
+	return m_load_value = load_value;
+}
+
+double Plate::poisson_ratio(void) const
+{
+	return m_poisson_ratio;
+}
+double Plate::poisson_ratio(double poisson_ratio)
+{
+	return m_poisson_ratio = poisson_ratio;
+}
+
+double Plate::elastic_modulus(void) const
+{
+	return m_elastic_modulus;
+}
+double Plate::elastic_modulus(double elastic_modulus)
+{
+	return m_elastic_modulus = elastic_modulus;
 }
 
 Plate::Load Plate::load(void) const

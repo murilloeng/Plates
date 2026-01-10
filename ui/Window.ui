@@ -28,18 +28,6 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="2" column="0">
-        <widget class="QGroupBox" name="group_loads">
-         <property name="font">
-          <font>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="title">
-          <string>Loads</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
         <widget class="QGroupBox" name="group_mesh">
          <property name="font">
           <font>
@@ -137,6 +125,85 @@
          </layout>
         </widget>
        </item>
+       <item row="5" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="3" column="0">
+        <widget class="QGroupBox" name="group_loads">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="title">
+          <string>Loads</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="1">
+           <widget class="QComboBox" name="comboBox">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <item>
+             <property name="text">
+              <string>Ponctual</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Distributed</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_loads_type">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_loads_value">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Value:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="edit_loads_value">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="group_geometry">
          <property name="font">
@@ -169,36 +236,6 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QLineEdit" name="edit_geometry_radius">
-            <property name="font">
-             <font>
-              <bold>false</bold>
-             </font>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QLabel" name="label_geometry_radius">
-            <property name="font">
-             <font>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>Radius:</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLineEdit" name="edit_geometry_height">
-            <property name="font">
-             <font>
-              <bold>false</bold>
-             </font>
-            </property>
-           </widget>
-          </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_geometry_width">
             <property name="font">
@@ -223,6 +260,24 @@
             </property>
            </widget>
           </item>
+          <item row="3" column="1">
+           <widget class="QLineEdit" name="edit_geometry_radius">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
+           <widget class="QLineEdit" name="edit_geometry_height">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
           <item row="0" column="1">
            <widget class="QComboBox" name="combo_geometry_type">
             <property name="font">
@@ -242,21 +297,167 @@
             </item>
            </widget>
           </item>
+          <item row="3" column="0">
+           <widget class="QLabel" name="label_geometry_radius">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Radius:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="0">
+           <widget class="QLabel" name="label_geometry_thickness">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Thickness:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLineEdit" name="edit_geometry_thickness">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
-       <item row="3" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
+       <item row="1" column="0">
+        <widget class="QGroupBox" name="group_material">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
          </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
+         <property name="title">
+          <string>Material</string>
          </property>
-        </spacer>
+         <layout class="QGridLayout" name="gridLayout_5">
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_material_poisson_ratio">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Elastic modulus:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_material_elastic_modulus">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Poisson ratio:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QLineEdit" name="edit_material_poisson_ratio">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QLineEdit" name="edit_material_elastic_modulus">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QGroupBox" name="group_canvas">
+         <property name="font">
+          <font>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="title">
+          <string>Canvas</string>
+         </property>
+         <layout class="QGridLayout" name="gridLayout_6">
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_canvas_type">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Type:</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QComboBox" name="combo_canvas_type">
+            <property name="font">
+             <font>
+              <bold>false</bold>
+             </font>
+            </property>
+            <item>
+             <property name="text">
+              <string>Model</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Shear 11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Shear 22</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Shear 12</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Moment 11</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Moment 22</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Moment 12</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+         </layout>
+        </widget>
        </item>
       </layout>
      </widget>

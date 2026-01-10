@@ -11,12 +11,14 @@
 static double(Plate::*fun_geometry_set[])(double) = {
 	&Plate::width,
 	&Plate::height,
-	&Plate::radius
+	&Plate::radius,
+	&Plate::thickness
 };
 static double(Plate::*fun_geometry_get[])(void) const = {
 	&Plate::width,
 	&Plate::height,
-	&Plate::radius
+	&Plate::radius,
+	&Plate::thickness
 };
 
 static uint32_t(Plate::*fun_mesh_set[])(uint32_t) = {
@@ -38,9 +40,11 @@ Window::Window(void) : m_ui{new Ui::Window}
 	//data
 	m_ui->setupUi(this);
 	//setup
+	setup_load();
 	setup_mesh();
 	setup_canvas();
 	setup_geometry();
+	setup_material();
 	setWindowTitle("Plates");
 	//connect
 	connect_mesh();
@@ -82,13 +86,18 @@ void Window::slot_mesh(void)
 		}
 	}
 }
+void Window::slot_load(void)
+{
+
+}
 void Window::slot_geometry(void)
 {
 	bool test;
 	QLineEdit* edits[] = {
 		m_ui->edit_geometry_width,
 		m_ui->edit_geometry_height,
-		m_ui->edit_geometry_radius
+		m_ui->edit_geometry_radius,
+		m_ui->edit_geometry_thickness
 	};
 	const QObject* sender = QObject::sender();
 	for(uint32_t i = 0; i < sizeof(edits) / sizeof(edits[0]); i++)
@@ -109,8 +118,17 @@ void Window::slot_geometry(void)
 		}
 	}
 }
+void Window::slot_material(void)
+{
+
+}
 
 //setup
+void Window::setup_load(void)
+{
+	m_ui->comboBox->setCurrentIndex(uint32_t(m_plate.load()));
+	m_ui->edit_loads_value->setText(QString::asprintf("%+.6e", m_plate.load_value()));
+}
 void Window::setup_mesh(void)
 {
 	m_ui->edit_mesh_angle->setText(QString::asprintf("%d", m_plate.mesh_angle()));
@@ -136,12 +154,18 @@ void Window::setup_geometry(void)
 	m_ui->edit_geometry_width->setText(QString::asprintf("%+.6e", m_plate.width()));
 	m_ui->edit_geometry_height->setText(QString::asprintf("%+.6e", m_plate.height()));
 	m_ui->edit_geometry_radius->setText(QString::asprintf("%+.6e", m_plate.radius()));
+	m_ui->edit_geometry_thickness->setText(QString::asprintf("%+.6e", m_plate.thickness()));
 	m_ui->edit_geometry_radius->setVisible(m_plate.geometry() == Plate::Geometry::circle);
 	m_ui->label_geometry_radius->setVisible(m_plate.geometry() == Plate::Geometry::circle);
 	m_ui->edit_geometry_width->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
 	m_ui->label_geometry_width->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
 	m_ui->edit_geometry_height->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
 	m_ui->label_geometry_height->setVisible(m_plate.geometry() == Plate::Geometry::rectangle);
+}
+void Window::setup_material(void)
+{
+	m_ui->edit_material_poisson_ratio->setText(QString::asprintf("%+.6e", m_plate.poisson_ratio()));
+	m_ui->edit_material_elastic_modulus->setText(QString::asprintf("%+.6e", m_plate.elastic_modulus()));
 }
 
 //connect

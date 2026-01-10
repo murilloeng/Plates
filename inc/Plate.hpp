@@ -26,6 +26,16 @@ public:
 		ponctual,
 		distributed
 	};
+	enum Canvas : uint32_t
+	{
+		model,
+		shear_11,
+		shear_22,
+		shear_12,
+		moment_11,
+		moment_22,
+		moment_12
+	};
 
 	//data
 	double width(double);
@@ -36,6 +46,18 @@ public:
 
 	double radius(double);
 	double radius(void) const;
+
+	double thickness(double);
+	double thickness(void) const;
+
+	double load_value(double);
+	double load_value(void) const;
+
+	double poisson_ratio(double);
+	double poisson_ratio(void) const;
+
+	double elastic_modulus(double);
+	double elastic_modulus(void) const;
 
 	Load load(Load);
 	Load load(void) const;
@@ -64,6 +86,10 @@ private:
 	double m_width;
 	double m_height;
 	double m_radius;
+	double m_thickness;
+	double m_load_value;
+	double m_poisson_ratio;
+	double m_elastic_modulus;
 
 	Load m_load;
 	Geometry m_geometry;

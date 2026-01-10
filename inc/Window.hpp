@@ -23,12 +23,16 @@ public:
 private:
 	//slots
 	void slot_mesh(void);
+	void slot_load(void);
 	void slot_geometry(void);
+	void slot_material(void);
 
 	//setup
+	void setup_load(void);
 	void setup_mesh(void);
 	void setup_canvas(void);
 	void setup_geometry(void);
+	void setup_material(void);
 
 	//connect
 	void connect_mesh(void);
