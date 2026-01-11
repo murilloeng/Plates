@@ -7,7 +7,9 @@
 #include "Canvas/Canvas/inc/Objects/Object.hpp"
 
 //Plates
+#include "Plates/inc/fea/Load.hpp"
 #include "Plates/inc/fea/Mesh.hpp"
+#include "Plates/inc/fea/Drawing.hpp"
 #include "Plates/inc/fea/Geometry.hpp"
 #include "Plates/inc/fea/Material.hpp"
 
@@ -22,33 +24,12 @@ namespace fea
 		//destructor
 		~Plate(void);
 
-		//types
-		enum Load : uint32_t
-		{
-			ponctual,
-			distributed
-		};
-		enum Canvas : uint32_t
-		{
-			model,
-			shear_11,
-			shear_22,
-			shear_12,
-			moment_11,
-			moment_22,
-			moment_12
-		};
-
 		//data
+		Load& load(void);
 		Mesh& mesh(void);
+		Drawing& drawing(void);
 		Geometry& geometry(void);
 		Material& material(void);
-
-		double load_value(double);
-		double load_value(void) const;
-
-		Load load(Load);
-		Load load(void) const;
 
 	private:
 		//buffers
@@ -62,11 +43,10 @@ namespace fea
 		void buffers_data(void) const override;
 
 		//data
+		Load m_load;
 		Mesh m_mesh;
+		Drawing m_drawing;
 		Geometry m_geometry;
 		Material m_material;
-
-		Load m_load;
-		double m_load_value;
 	};
 }

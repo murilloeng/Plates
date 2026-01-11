@@ -8,9 +8,7 @@
 namespace fea
 {
 	//constructor
-	Plate::Plate(void) :
-		m_load_value{0},
-		m_load{Load::ponctual}
+	Plate::Plate(void)
 	{
 		return;
 	}
@@ -22,9 +20,17 @@ namespace fea
 	}
 
 	//data
+	Load& Plate::load(void)
+	{
+		return m_load;
+	}
 	Mesh& Plate::mesh(void)
 	{
 		return m_mesh;
+	}
+	Drawing& Plate::drawing(void)
+	{
+		return m_drawing;
 	}
 	Geometry& Plate::geometry(void)
 	{
@@ -33,24 +39,6 @@ namespace fea
 	Material& Plate::material(void)
 	{
 		return m_material;
-	}
-
-	double Plate::load_value(void) const
-	{
-		return m_load_value;
-	}
-	double Plate::load_value(double load_value)
-	{
-		return m_load_value = load_value;
-	}
-
-	Plate::Load Plate::load(void) const
-	{
-		return m_load;
-	}
-	Plate::Load Plate::load(Load load)
-	{
-		return m_load = load;
 	}
 
 	//buffers

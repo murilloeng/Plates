@@ -6,8 +6,9 @@
 
 //Plates
 #include "Plates/inc/gui/Mesh.hpp"
-#include "Plates/inc/gui/Loads.hpp"
+#include "Plates/inc/gui/Load.hpp"
 #include "Plates/inc/gui/Window.hpp"
+#include "Plates/inc/gui/Drawing.hpp"
 #include "Plates/inc/gui/Material.hpp"
 #include "Plates/inc/gui/Geometry.hpp"
 #include "Plates/build/uic/Window.hpp"
@@ -25,6 +26,7 @@ namespace gui
 		//connect
 		QObject::connect(m_ui->tool_mesh, &QToolButton::clicked, this, &Window::slot_mesh);
 		QObject::connect(m_ui->tool_load, &QToolButton::clicked, this, &Window::slot_load);
+		QObject::connect(m_ui->tool_drawing, &QToolButton::clicked, this, &Window::slot_drawing);
 		QObject::connect(m_ui->tool_geometry, &QToolButton::clicked, this, &Window::slot_geometry);
 		QObject::connect(m_ui->tool_material, &QToolButton::clicked, this, &Window::slot_material);
 	}
@@ -36,13 +38,17 @@ namespace gui
 	}
 
 	//slots
+	void Window::slot_load(void)
+	{
+		Load(this, &m_plate.load(), m_ui->canvas).exec();
+	}
 	void Window::slot_mesh(void)
 	{
 		Mesh(this, &m_plate.mesh(), m_ui->canvas).exec();
 	}
-	void Window::slot_load(void)
+	void Window::slot_drawing(void)
 	{
-		Loads(this, &m_plate, m_ui->canvas).exec();
+		Drawing(this, &m_plate.drawing(), m_ui->canvas).exec();
 	}
 	void Window::slot_geometry(void)
 	{

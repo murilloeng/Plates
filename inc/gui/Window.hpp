@@ -26,6 +26,7 @@ namespace gui
 		//slots
 		void slot_load(void);
 		void slot_mesh(void);
+		void slot_drawing(void);
 		void slot_geometry(void);
 		void slot_material(void);
 

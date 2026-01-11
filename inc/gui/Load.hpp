@@ -3,28 +3,28 @@
 //Qt
 #include "QtWidgets/QDialog"
 
-namespace Ui { class Loads; }
-namespace fea { class Plate; }
+namespace Ui { class Load; }
+namespace fea { class Load; }
 namespace gui { class Canvas; }
 
 namespace gui
 {
-	class Loads : public QDialog
+	class Load : public QDialog
 	{
 	public:
 		//constructor
-		Loads(QWidget*, fea::Plate*, Canvas*);
+		Load(QWidget*, fea::Load*, Canvas*);
 
 		//destructor
-		~Loads(void);
+		~Load(void);
 
 	private:
 		//slot
 		void slot(void);
 
 		//data
-		Ui::Loads* m_ui;
+		Ui::Load* m_ui;
 		Canvas* m_canvas;
-		fea::Plate* m_plate;
+		fea::Load* m_load;
 	};
 }

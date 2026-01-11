@@ -161,11 +161,14 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="inc\fea\Drawing.hpp" />
     <ClInclude Include="inc\fea\Geometry.hpp" />
+    <ClInclude Include="inc\fea\Load.hpp" />
     <ClInclude Include="inc\fea\Material.hpp" />
     <ClInclude Include="inc\fea\Mesh.hpp" />
+    <ClInclude Include="inc\gui\Drawing.hpp" />
     <ClInclude Include="inc\gui\Geometry.hpp" />
-    <ClInclude Include="inc\gui\Loads.hpp" />
+    <ClInclude Include="inc\gui\Load.hpp" />
     <ClInclude Include="inc\gui\Material.hpp" />
     <ClInclude Include="inc\gui\Mesh.hpp" />
     <ClInclude Include="inc\fea\Plate.hpp" />
@@ -173,11 +176,14 @@
     <ClInclude Include="inc\gui\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\fea\Drawing.cpp" />
     <ClCompile Include="src\fea\Geometry.cpp" />
+    <ClCompile Include="src\fea\Load.cpp" />
     <ClCompile Include="src\fea\Material.cpp" />
     <ClCompile Include="src\fea\Mesh.cpp" />
+    <ClCompile Include="src\gui\Drawing.cpp" />
     <ClCompile Include="src\gui\Geometry.cpp" />
-    <ClCompile Include="src\gui\Loads.cpp" />
+    <ClCompile Include="src\gui\Load.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\gui\Material.cpp" />
     <ClCompile Include="src\gui\Mesh.cpp" />
@@ -192,14 +198,6 @@
       <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Qt uic: %(Identity)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build/uic/%(FileName).hpp</Outputs>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build/uic/%(FileName).hpp</Outputs>
-    </CustomBuild>
-    <CustomBuild Include="ui\Loads.ui">
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Qt uic: %(Identity)</Message>
-      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build/uic/%(FileName).hpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
-      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Qt uic: %(Identity)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build/uic/%(FileName).hpp</Outputs>
     </CustomBuild>
     <CustomBuild Include="ui\Canvas.ui">
@@ -227,6 +225,28 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build\uic\%(Filename).hpp</Outputs>
     </CustomBuild>
     <CustomBuild Include="ui\Material.ui">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Qt uic: %(Identity)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build/uic/%(FileName).hpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Qt uic: %(Identity)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build/uic/%(FileName).hpp</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui\Load.ui">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Qt uic: %(Identity)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build/uic/%(FileName).hpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Qt uic: %(Identity)</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">build/uic/%(FileName).hpp</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="ui\Drawing.ui">
+      <FileType>Document</FileType>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QtHome)\bin\uic %(Identity) -o build/uic/%(FileName).hpp</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Qt uic: %(Identity)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">build/uic/%(FileName).hpp</Outputs>
