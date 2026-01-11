@@ -1,0 +1,30 @@
+#pragma once
+
+//Qt
+#include "QtWidgets/QDialog"
+
+namespace Ui{ class Mesh; }
+namespace fea { class Plate; }
+namespace gui { class Canvas; }
+
+namespace gui
+{
+	class Mesh : public QDialog
+	{
+	public:
+		//constructor
+		Mesh(QWidget*, fea::Plate*, Canvas*);
+
+		//destructor
+		~Mesh(void);
+
+	private:
+		//slot
+		void slot(void);
+
+		//data
+		Ui::Mesh* m_ui;
+		Canvas* m_canvas;
+		fea::Plate* m_plate;
+	};
+}

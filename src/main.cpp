@@ -6,7 +6,7 @@
 #include "QtWidgets/QApplication"
 
 //plates
-#include "Plates/inc/Window.hpp"
+#include "Plates/inc/gui/Window.hpp"
 
 int main(int argc, char* argv[])
 {
@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
 		//application
 		QApplication application(argc, argv);
 		//window
-		Window window;
+		gui::Window window;
 		window.showMaximized();
 		//return
 		return application.exec();
