@@ -38,7 +38,7 @@ namespace gui
 	//slots
 	void Window::slot_mesh(void)
 	{
-		Mesh(this, &m_plate, m_ui->canvas).exec();
+		Mesh(this, &m_plate.mesh(), m_ui->canvas).exec();
 	}
 	void Window::slot_load(void)
 	{
@@ -46,11 +46,11 @@ namespace gui
 	}
 	void Window::slot_geometry(void)
 	{
-		Geometry(this, &m_plate, m_ui->canvas).exec();
+		Geometry(this, &m_plate.geometry(), m_ui->canvas).exec();
 	}
 	void Window::slot_material(void)
 	{
-		Material(this, &m_plate, m_ui->canvas).exec();
+		Material(this, &m_plate.material(), m_ui->canvas).exec();
 	}
 
 	//setup

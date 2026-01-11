@@ -3,9 +3,9 @@
 //Qt
 #include "QtWidgets/Qdialog"
 
-namespace fea { class Plate; }
 namespace gui { class Canvas; }
 namespace Ui { class Geometry; }
+namespace fea { class Geometry; }
 
 namespace gui
 {
@@ -13,7 +13,7 @@ namespace gui
 	{
 	public:
 		//constructor
-		Geometry(QWidget*, fea::Plate*, Canvas*);
+		Geometry(QWidget*, fea::Geometry*, Canvas*);
 
 		//destructor
 		~Geometry(void);
@@ -25,6 +25,6 @@ namespace gui
 		//data
 		Canvas* m_canvas;
 		Ui::Geometry* m_ui;
-		fea::Plate* m_plate;
+		fea::Geometry* m_geometry;
 	};
 }

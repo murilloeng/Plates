@@ -1,43 +1,43 @@
 //Plate
-#include "Plates/inc/fea/Plate.hpp"
 #include "Plates/inc/gui/Canvas.hpp"
+#include "Plates/inc/fea/Geometry.hpp"
 #include "Plates/inc/gui/Geometry.hpp"
 
 #include "Plates/build/uic/Geometry.hpp"
 
-static double(fea::Plate::* functions_set[])(double) = {
-	&fea::Plate::width,
-	&fea::Plate::height,
-	&fea::Plate::radius,
-	&fea::Plate::thickness
+static double(fea::Geometry::* functions_set[])(double) = {
+	&fea::Geometry::width,
+	&fea::Geometry::height,
+	&fea::Geometry::radius,
+	&fea::Geometry::thickness
 };
-static double(fea::Plate::* functions_get[])(void) const = {
-	&fea::Plate::width,
-	&fea::Plate::height,
-	&fea::Plate::radius,
-	&fea::Plate::thickness
+static double(fea::Geometry::* functions_get[])(void) const = {
+	&fea::Geometry::width,
+	&fea::Geometry::height,
+	&fea::Geometry::radius,
+	&fea::Geometry::thickness
 };
 
 namespace gui
 {
 	//constructor
-	Geometry::Geometry(QWidget* parent, fea::Plate* plate, Canvas* canvas) :
-		QDialog(parent), m_plate{ plate }, m_canvas{ canvas }, m_ui{ new Ui::Geometry }
+	Geometry::Geometry(QWidget* parent, fea::Geometry* geometry, Canvas* canvas) :
+		QDialog(parent), m_geometry{ geometry }, m_canvas{ canvas }, m_ui{ new Ui::Geometry }
 	{
 		//data
 		m_ui->setupUi(this);
-		m_ui->combo_type->setCurrentIndex(uint32_t(m_plate->geometry()));
-		m_ui->edit_width->setText(QString::asprintf("%+.6e", m_plate->width()));
-		m_ui->edit_height->setText(QString::asprintf("%+.6e", m_plate->height()));
-		m_ui->edit_radius->setText(QString::asprintf("%+.6e", m_plate->radius()));
-		m_ui->edit_thickness->setText(QString::asprintf("%+.6e", m_plate->thickness()));
+		m_ui->combo_type->setCurrentIndex(uint32_t(m_geometry->type()));
+		m_ui->edit_width->setText(QString::asprintf("%+.6e", m_geometry->width()));
+		m_ui->edit_height->setText(QString::asprintf("%+.6e", m_geometry->height()));
+		m_ui->edit_radius->setText(QString::asprintf("%+.6e", m_geometry->radius()));
+		m_ui->edit_thickness->setText(QString::asprintf("%+.6e", m_geometry->thickness()));
 		//visibility
-		m_ui->edit_radius->setVisible(m_plate->geometry() == fea::Plate::Geometry::circle);
-		m_ui->label_radius->setVisible(m_plate->geometry() == fea::Plate::Geometry::circle);
-		m_ui->edit_width->setVisible(m_plate->geometry() == fea::Plate::Geometry::rectangle);
-		m_ui->label_width->setVisible(m_plate->geometry() == fea::Plate::Geometry::rectangle);
-		m_ui->edit_height->setVisible(m_plate->geometry() == fea::Plate::Geometry::rectangle);
-		m_ui->label_height->setVisible(m_plate->geometry() == fea::Plate::Geometry::rectangle);
+		m_ui->edit_radius->setVisible(m_geometry->type() == fea::Geometry::Type::circle);
+		m_ui->label_radius->setVisible(m_geometry->type() == fea::Geometry::Type::circle);
+		m_ui->edit_width->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->label_width->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->edit_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->label_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
 		//connect
 		QObject::connect(m_ui->edit_width, &QLineEdit::editingFinished, this, &Geometry::slot);
 		QObject::connect(m_ui->edit_height, &QLineEdit::editingFinished, this, &Geometry::slot);
@@ -66,13 +66,13 @@ namespace gui
 		{
 			if (sender == edits[i])
 			{
-				double value_old = (m_plate->*functions_get[i])();
+				double value_old = (m_geometry->*functions_get[i])();
 				const double value_new = edits[i]->text().toDouble(&test);
 				if (test && value_new != value_old)
 				{
 					//data
 					value_old = value_new;
-					(m_plate->*functions_set[i])(value_new);
+					(m_geometry->*functions_set[i])(value_new);
 					//canvas
 					m_canvas->scene()->update(true);
 					m_canvas->scene()->camera().bound();

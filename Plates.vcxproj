@@ -116,6 +116,7 @@
       <AdditionalIncludeDirectories>..;../external/cpp/inc;$(QtHome)\include</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus /D NOMINMAX %(AdditionalOptions)</AdditionalOptions>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +144,7 @@
       <AdditionalIncludeDirectories>..;../external/cpp/inc;$(QtHome)\include</AdditionalIncludeDirectories>
       <AdditionalOptions>/Zc:__cplusplus /D NOMINMAX %(AdditionalOptions)</AdditionalOptions>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,6 +161,9 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="inc\fea\Geometry.hpp" />
+    <ClInclude Include="inc\fea\Material.hpp" />
+    <ClInclude Include="inc\fea\Mesh.hpp" />
     <ClInclude Include="inc\gui\Geometry.hpp" />
     <ClInclude Include="inc\gui\Loads.hpp" />
     <ClInclude Include="inc\gui\Material.hpp" />
@@ -168,6 +173,9 @@
     <ClInclude Include="inc\gui\Window.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\fea\Geometry.cpp" />
+    <ClCompile Include="src\fea\Material.cpp" />
+    <ClCompile Include="src\fea\Mesh.cpp" />
     <ClCompile Include="src\gui\Geometry.cpp" />
     <ClCompile Include="src\gui\Loads.cpp" />
     <ClCompile Include="src\main.cpp" />

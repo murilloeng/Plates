@@ -4,7 +4,7 @@
 #include "QtWidgets/QDialog"
 
 namespace Ui{ class Mesh; }
-namespace fea { class Plate; }
+namespace fea { class Mesh; }
 namespace gui { class Canvas; }
 
 namespace gui
@@ -13,7 +13,7 @@ namespace gui
 	{
 	public:
 		//constructor
-		Mesh(QWidget*, fea::Plate*, Canvas*);
+		Mesh(QWidget*, fea::Mesh*, Canvas*);
 
 		//destructor
 		~Mesh(void);
@@ -25,6 +25,6 @@ namespace gui
 		//data
 		Ui::Mesh* m_ui;
 		Canvas* m_canvas;
-		fea::Plate* m_plate;
+		fea::Mesh* m_mesh;
 	};
 }
