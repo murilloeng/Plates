@@ -13,6 +13,13 @@ namespace gui
 	{
 		//data
 		m_ui->setupUi(this);
+		for(uint32_t i = 0; i < uint32_t(fea::Drawing::Type::last); i++)
+		{
+			m_ui->combo_type->addItem(fea::Drawing::type_name(fea::Drawing::Type(i)));
+		}
+		m_ui->combo_type->setCurrentIndex(uint32_t(m_drawing->type()));
+		//connect
+		QObject::connect(m_ui->combo_type, &QComboBox::currentIndexChanged, this, &Drawing::slot_combo);
 	}
 
 	//destructor
@@ -22,8 +29,8 @@ namespace gui
 	}
 
 	//slot
-	void Drawing::slot(void)
+	void Drawing::slot_combo(void)
 	{
-		return;
+		m_drawing->type(fea::Drawing::Type(m_ui->combo_type->currentIndex()));
 	}
 }

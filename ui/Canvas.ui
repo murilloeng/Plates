@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>174</width>
-    <height>78</height>
+    <height>62</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
       </font>
      </property>
      <property name="title">
-      <string>Canvas</string>
+      <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout_6">
       <item row="0" column="0">

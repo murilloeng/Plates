@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>174</width>
-    <height>78</height>
+    <width>196</width>
+    <height>62</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item row="0" column="0">
     <widget class="QGroupBox" name="group">
      <property name="title">
-      <string>Drawing</string>
+      <string/>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
@@ -28,38 +28,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QComboBox" name="combo_type">
-        <item>
-         <property name="text">
-          <string>Shear 12</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Shear 13</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Shear 23</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Moment 11</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Moment 22</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Moment 12</string>
-         </property>
-        </item>
-       </widget>
+       <widget class="QComboBox" name="combo_type"/>
       </item>
      </layout>
     </widget>
