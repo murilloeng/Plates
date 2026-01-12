@@ -29,7 +29,8 @@ namespace gui
 
 	private:
 		//slot
-		void slot(void);
+		void slot_edit(void);
+		void slot_combo(void);
 
 		//data
 		Canvas* m_canvas;

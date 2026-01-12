@@ -25,12 +25,12 @@ namespace gui
 	{
 		//data
 		m_ui->setupUi(this);
+		const fea::Geometry::Type type = m_mesh->plate()->geometry().type();
 		m_ui->edit_angle->setText(QString::asprintf("%d", m_mesh->angle()));
 		m_ui->edit_width->setText(QString::asprintf("%d", m_mesh->width()));
 		m_ui->edit_height->setText(QString::asprintf("%d", m_mesh->height()));
 		m_ui->edit_radius->setText(QString::asprintf("%d", m_mesh->radius()));
 		//visibility
-		const fea::Geometry::Type type = fea::Geometry::Type::rectangle;
 		m_ui->edit_angle->setVisible(type == fea::Geometry::Type::circle);
 		m_ui->edit_radius->setVisible(type == fea::Geometry::Type::circle);
 		m_ui->label_angle->setVisible(type == fea::Geometry::Type::circle);

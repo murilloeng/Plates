@@ -39,10 +39,11 @@ namespace gui
 		m_ui->edit_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
 		m_ui->label_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
 		//connect
-		QObject::connect(m_ui->edit_width, &QLineEdit::editingFinished, this, &Geometry::slot);
-		QObject::connect(m_ui->edit_height, &QLineEdit::editingFinished, this, &Geometry::slot);
-		QObject::connect(m_ui->edit_radius, &QLineEdit::editingFinished, this, &Geometry::slot);
-		QObject::connect(m_ui->edit_thickness, &QLineEdit::editingFinished, this, &Geometry::slot);
+		QObject::connect(m_ui->edit_width, &QLineEdit::editingFinished, this, &Geometry::slot_edit);
+		QObject::connect(m_ui->edit_height, &QLineEdit::editingFinished, this, &Geometry::slot_edit);
+		QObject::connect(m_ui->edit_radius, &QLineEdit::editingFinished, this, &Geometry::slot_edit);
+		QObject::connect(m_ui->edit_thickness, &QLineEdit::editingFinished, this, &Geometry::slot_edit);
+		QObject::connect(m_ui->combo_type, &QComboBox::currentIndexChanged, this, &Geometry::slot_combo);
 	}
 
 	//destructor
@@ -52,7 +53,7 @@ namespace gui
 	}
 
 	//slot
-	void Geometry::slot(void)
+	void Geometry::slot_edit(void)
 	{
 		bool test;
 		QLineEdit* edits[] = {
@@ -81,5 +82,17 @@ namespace gui
 				edits[i]->setText(QString::asprintf("%+.6e", value_old));
 			}
 		}
+	}
+	void Geometry::slot_combo(void)
+	{
+		//type
+		m_geometry->type(fea::Geometry::Type(m_ui->combo_type->currentIndex()));
+		//visibility
+		m_ui->edit_radius->setVisible(m_geometry->type() == fea::Geometry::Type::circle);
+		m_ui->label_radius->setVisible(m_geometry->type() == fea::Geometry::Type::circle);
+		m_ui->edit_width->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->label_width->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->edit_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
+		m_ui->label_height->setVisible(m_geometry->type() == fea::Geometry::Type::rectangle);
 	}
 }
