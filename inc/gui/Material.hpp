@@ -1,7 +1,7 @@
 #pragma once
 
 //Qt
-#include "QtWidgets/Qdialog"
+#include "QtWidgets/QDialog"
 
 namespace Ui
 {

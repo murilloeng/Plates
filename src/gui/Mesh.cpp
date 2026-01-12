@@ -21,7 +21,7 @@ namespace gui
 {
 	//constructor
 	Mesh::Mesh(QWidget* parent, fea::Mesh* mesh, Canvas* canvas) :
-		QDialog(parent), m_ui{new Ui::Mesh}, m_mesh{mesh}, m_canvas{canvas}
+		QDialog(parent), m_ui{new Ui::Mesh}, m_canvas{canvas}, m_mesh{mesh}
 	{
 		//data
 		m_ui->setupUi(this);

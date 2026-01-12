@@ -22,7 +22,7 @@ namespace gui
 {
 	//constructor
 	Geometry::Geometry(QWidget* parent, fea::Geometry* geometry, Canvas* canvas) :
-		QDialog(parent), m_geometry{ geometry }, m_canvas{ canvas }, m_ui{ new Ui::Geometry }
+		QDialog(parent), m_canvas{ canvas }, m_ui{ new Ui::Geometry }, m_geometry{ geometry }
 	{
 		//data
 		m_ui->setupUi(this);

@@ -9,7 +9,7 @@ namespace gui
 {
 	//constructor
 	Drawing::Drawing(QWidget* parent, fea::Drawing* drawing, Canvas* canvas) :
-		QDialog(parent), m_drawing{ drawing}, m_canvas{ canvas }, m_ui{ new Ui::Drawing }
+		QDialog(parent), m_canvas{ canvas }, m_ui{ new Ui::Drawing }, m_drawing{ drawing }
 	{
 		//data
 		m_ui->setupUi(this);

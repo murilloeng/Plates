@@ -17,7 +17,7 @@ namespace gui
 {
 	//constructor
 	Material::Material(QWidget* parent, fea::Material* material, Canvas* canvas) :
-		QDialog(parent), m_material{ material }, m_canvas{ canvas }, m_ui{ new Ui::Material }
+		QDialog(parent), m_canvas{ canvas }, m_ui{ new Ui::Material }, m_material{ material }
 	{
 		//data
 		m_ui->setupUi(this);
