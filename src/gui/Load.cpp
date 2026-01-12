@@ -15,7 +15,7 @@ namespace gui
 {
 	//constructor
 	Load::Load(QWidget* parent, fea::Load* load, Canvas* canvas) : 
-		QDialog(parent), m_ui{ new Ui::Load }, m_canvas{ canvas }, m_load{ load }
+		QDialog(parent), m_ui{new Ui::Load}, m_canvas{canvas}, m_load{load}
 	{
 		//data
 		m_ui->setupUi(this);

@@ -5,11 +5,16 @@
 
 namespace fea
 {
+	class Plate;
+}
+
+namespace fea
+{
 	class Drawing
 	{
 	public:
 		//constructor
-		Drawing(void);
+		Drawing(Plate*);
 
 		//destructor
 		~Drawing(void);
@@ -18,21 +23,17 @@ namespace fea
 		enum Type: uint32_t
 		{
 			model,
-			displacement_3,
-			rotation_1,
-			rotation_2,
-			shear_11,
-			shear_22,
-			shear_12,
-			moment_11,
-			moment_22,
-			moment_12,
+			dof_u3, dof_t1, dof_t2,
+			shear_S11, shear_S22, shear_S12,
+			moment_M11, moment_M22, moment_M12,
 			last
 		};
 
 		//data
 		Type type(Type);
 		Type type(void) const;
+
+		Plate* plate(void) const;
 
 		//type
 		const char8_t* type_name(void) const;
@@ -41,5 +42,6 @@ namespace fea
 	private:
 		//data
 		Type m_type;
+		Plate* m_plate;
 	};
 }

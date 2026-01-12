@@ -5,16 +5,23 @@
 
 namespace fea
 {
+	class Plate;
+}
+
+namespace fea
+{
 	class Mesh
 	{
 	public:
 		//constructor
-		Mesh(void);
+		Mesh(Plate*);
 
 		//destructor
 		~Mesh(void);
 
 		//data
+		Plate* plate(void) const;
+
 		uint32_t angle(uint32_t);
 		uint32_t angle(void) const;
 
@@ -29,6 +36,7 @@ namespace fea
 
 	private:
 		//data
+		Plate* m_plate;
 		uint32_t m_angle;
 		uint32_t m_width;
 		uint32_t m_height;

@@ -4,7 +4,7 @@
 namespace fea
 {
 	//constructor
-	Drawing::Drawing(void) : m_type(Type::model)
+	Drawing::Drawing(Plate* plate) : m_type{Type::model}, m_plate{plate}
 	{
 		return;
 	}
@@ -23,6 +23,11 @@ namespace fea
 	Drawing::Type Drawing::type(void) const
 	{
 		return m_type;
+	}
+
+	Plate* Drawing::plate(void) const
+	{
+		return m_plate;
 	}
 
 	//type

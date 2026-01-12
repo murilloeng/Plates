@@ -3,9 +3,18 @@
 //Qt
 #include "QtWidgets/QDialog"
 
-namespace gui { class Canvas; }
-namespace Ui { class Drawing; }
-namespace fea { class Drawing; }
+namespace fea
+{
+	class Drawing;
+}
+namespace gui
+{
+	class Canvas;
+}
+namespace Ui
+{
+	class Drawing;
+}
 
 namespace gui
 {

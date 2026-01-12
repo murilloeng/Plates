@@ -2,16 +2,23 @@
 
 namespace fea
 {
+	class Plate;
+}
+
+namespace fea
+{
 	class Material
 	{
 	public:
 		//constructor
-		Material(void);
+		Material(Plate*);
 
 		//destructor
 		~Material(void);
 
 		//data
+		Plate* plate(void) const;
+
 		double poisson_ratio(double);
 		double poisson_ratio(void) const;
 
@@ -20,8 +27,8 @@ namespace fea
 
 	private:
 		//data
+		Plate* m_plate;
 		double m_poisson_ratio;
 		double m_elastic_modulus;
-
 	};
 }

@@ -5,11 +5,16 @@
 
 namespace fea
 {
+	class Plate;
+}
+
+namespace fea
+{
 	class Load
 	{
 	public:
 		//constructor
-		Load(void);
+		Load(Plate*);
 
 		//destructor
 		~Load(void);
@@ -25,12 +30,15 @@ namespace fea
 		Type type(Type);
 		Type type(void) const;
 
+		Plate* plate(void) const;
+
 		double value(double);
 		double value(void) const;
 
 	private:
 		//data
 		Type m_type;
+		Plate* m_plate;
 		double m_value;
 	};
 }

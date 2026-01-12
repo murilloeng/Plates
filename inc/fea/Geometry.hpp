@@ -5,11 +5,16 @@
 
 namespace fea
 {
+	class Plate;
+}
+
+namespace fea
+{
 	class Geometry
 	{
 	public:
 		//constructor
-		Geometry(void);
+		Geometry(Plate*);
 
 		//destructor
 		~Geometry(void);
@@ -24,6 +29,8 @@ namespace fea
 		//data
 		Type type(Type);
 		Type type(void) const;
+
+		Plate* plate(void) const;
 
 		double width(double);
 		double width(void) const;
@@ -40,6 +47,7 @@ namespace fea
 	private:
 		//data
 		Type m_type;
+		Plate* m_plate;
 		double m_width;
 		double m_height;
 		double m_radius;

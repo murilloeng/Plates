@@ -4,7 +4,8 @@
 namespace fea
 {
 	//constructor
-	Load::Load(void) : m_type{ Type::ponctual }, m_value{ 0 }
+	Load::Load(Plate* plate) : 
+		m_type{Type::ponctual}, m_plate{plate}, m_value{0}
 	{
 		return;
 	}
@@ -23,6 +24,11 @@ namespace fea
 	Load::Type Load::type(Type type)
 	{
 		return m_type = type;
+	}
+
+	Plate* Load::plate(void) const
+	{
+		return m_plate;
 	}
 
 	double Load::value(void) const

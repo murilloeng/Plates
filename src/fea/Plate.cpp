@@ -8,7 +8,8 @@
 namespace fea
 {
 	//constructor
-	Plate::Plate(void)
+	Plate::Plate(void) :
+		m_load{this}, m_mesh{this}, m_drawing{this}, m_geometry{this}, m_material{this}
 	{
 		return;
 	}

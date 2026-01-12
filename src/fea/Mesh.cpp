@@ -4,8 +4,8 @@
 namespace fea
 {
 	//constructor
-	Mesh::Mesh(void) : 
-		m_angle{ 10 }, m_width{ 10 }, m_height{ 10 }, m_radius{ 10 }
+	Mesh::Mesh(Plate* plate) : 
+		m_plate{plate}, m_angle{10}, m_width{10}, m_height{10}, m_radius{10}
 	{
 		return;
 	}
@@ -17,6 +17,11 @@ namespace fea
 	}
 
 	//data
+	Plate* Mesh::plate(void) const
+	{
+		return m_plate;
+	}
+
 	uint32_t Mesh::angle(void) const
 	{
 		return m_angle;

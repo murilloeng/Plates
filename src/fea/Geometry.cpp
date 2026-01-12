@@ -4,9 +4,9 @@
 namespace fea
 {
 	//constructor
-	Geometry::Geometry(void) : 
-		m_type{ Type::rectangle },
-		m_width{ 1 }, m_height{ 1 }, m_radius{ 1 }, m_thickness{ 0.1 }
+	Geometry::Geometry(Plate* plate) : 
+		m_type{Type::rectangle}, m_plate{plate}, 
+		m_width{1}, m_height{1}, m_radius{1}, m_thickness{0.1}
 	{
 		return;
 	}
@@ -25,6 +25,11 @@ namespace fea
 	Geometry::Type Geometry::type(void) const
 	{
 		return m_type;
+	}
+
+	Plate* Geometry::plate(void) const
+	{
+		return m_plate;
 	}
 
 	double Geometry::width(void) const

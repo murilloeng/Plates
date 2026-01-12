@@ -17,13 +17,15 @@ namespace gui
 {
 	//constructor
 	Material::Material(QWidget* parent, fea::Material* material, Canvas* canvas) :
-		QDialog(parent), m_canvas{ canvas }, m_ui{ new Ui::Material }, m_material{ material }
+		QDialog(parent), m_canvas{canvas}, m_ui{new Ui::Material}, m_material{material}
 	{
 		//data
 		m_ui->setupUi(this);
 		m_ui->edit_poisson_ratio->setText(QString::asprintf("%+.6e", m_material->poisson_ratio()));
 		m_ui->edit_elastic_modulus->setText(QString::asprintf("%+.6e", m_material->elastic_modulus()));
-		//conne
+		//connect
+		QObject::connect(m_ui->edit_poisson_ratio, &QLineEdit::editingFinished, this, &Material::slot);
+		QObject::connect(m_ui->edit_elastic_modulus, &QLineEdit::editingFinished, this, &Material::slot);
 	}
 
 	//destructor

@@ -26,6 +26,7 @@
 				"${workspaceFolder}/..",
 				"${workspaceFolder}/../external/cpp/inc"
 			],
+			"cppStandard": "c++20",
 			"intelliSenseMode": "linux-gcc-x64"
 		}
 	],
